@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace api
@@ -27,18 +28,17 @@ namespace api
         {
             services.AddMvc()
                 .AddXmlSerializerFormatters();
-                
+
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Generate Random Data API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Generate Random Data API", Version = "v1" });
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseMvc();
-
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -46,8 +46,14 @@ namespace api
             });
 
             var redirectRootToSwagger = new RewriteOptions()
-                .AddRedirect("^$", "swagger");
+               .AddRedirect("^$", "swagger");
             app.UseRewriter(redirectRootToSwagger);
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
