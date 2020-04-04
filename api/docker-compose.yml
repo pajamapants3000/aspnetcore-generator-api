@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+    generator:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: pajamapants3000/pluralsight-generator:module7
+        ports:
+            - "8080:80"
+    mail:
+        image: mailhog/mailhog
+        ports:
+            - "8025:8025"
+
