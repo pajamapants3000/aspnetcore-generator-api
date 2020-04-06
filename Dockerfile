@@ -1,5 +1,5 @@
 # Build stage
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 as build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 
 WORKDIR /generator
 
@@ -16,7 +16,7 @@ COPY . .
 RUN dotnet test tests/tests.csproj
 
 # publish
-RUN dotnet publish api/api.csproj -o publish
+RUN dotnet publish api/api.csproj -o /publish
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
