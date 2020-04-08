@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export DOCKER_HOST=192.168.0.201
+# This breaks the build no matter what IP I set - maybe only works from remote server?
+#export DOCKER_HOST=192.168.0.201
 
 # determine stack number by removing all non-numeric characters
 stack_num=${STACK_NAME//[^0-9]/}
@@ -11,7 +12,7 @@ echo "stack_num: ${stack_num}"
 # so, on-demand-1 maps to 8110 and 8111, on-demand-2 maps to 8120 and 8121, etc
 
 # compute port for generator 
-export PORT_GENERATOR=`expr ${stack_num} "*" 10 + 8100`
+export PORT_GENERATOR=`expr ${stack_num} "*" 10 + 8200`
 echo "generator port: ${PORT_GENERATOR}"
 
 # compute port for mailhog
