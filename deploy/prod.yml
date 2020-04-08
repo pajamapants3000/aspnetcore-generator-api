@@ -14,4 +14,4 @@ services:
  
 configs:
     prodappsettings:
-        file: ./prodappsettings.json
+        file: prodappsettings.json
