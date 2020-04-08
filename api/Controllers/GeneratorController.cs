@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Faker;
 using Faker.Extensions;
 using MimeKit;
@@ -15,8 +16,15 @@ namespace api.Controllers
     [Route("[action]")]
     public class GenerateController : Controller
     {
-        public const string MAIL_HOST = "mail";
-        public const int MAIL_PORT = 1025;
+        public readonly string MAIL_HOST = "mail";
+        public readonly int MAIL_PORT = 1025;
+
+        public GenerateController(IOptions<MailServerConfig> mailServerConfigAccessor)
+        {
+            var config = mailServerConfigAccessor.Value;
+            MAIL_HOST = config.Host;
+            MAIL_PORT = config.Port;
+        }
 
         [HttpPost]
         public async Task EmailRandomNames(Range range, string email = "test@fake.com")

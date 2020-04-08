@@ -33,10 +33,14 @@ namespace api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NEW2 Generate Random Data API", Version = "v1" });
             });
+
+            services.Configure<MailServerConfig>(Configuration.GetSection("MailServer"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app,
+            IOptions<MailServerConfig> mailServerConfigAccessor,
+            IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -53,6 +57,9 @@ namespace api
             {
                 endpoints.MapControllers();
             });
+
+            var mailServerConfig = mailServerConfigAccessor.Value;
+            Console.WriteLine($"Mail server: {mailServerConfig.Host}:{mailServerConfig.Port}");
         }
     }
 }
