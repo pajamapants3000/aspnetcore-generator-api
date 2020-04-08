@@ -10,7 +10,7 @@ services:
 #            MAILSERVER__PORT: 25
         configs:
             - source: prodappsettings
-                target: /publish/appsettings.json
+              target: /publish/appsettings.json
  
 configs:
     prodappsettings:

@@ -6,7 +6,7 @@
         }
     },
     "MailServer": {
-        "Host": "mail-prod-appsettings",
+        "Host": "mail-prod-appsettings2",
         "Port": 5025
     }
 }
