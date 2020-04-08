@@ -12,7 +12,40 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		Dockerfile = Dockerfile
 		LICENSE = LICENSE
+		on-demand-deploy.sh = on-demand-deploy.sh
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "integration", "integration\integration.csproj", "{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{EA280271-3648-4468-82E3-03B138535BC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{82555C16-8EB7-47A6-8024-B0387A103071}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\demo.yml = deploy\demo.yml
+		deploy\prod.yml = deploy\prod.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "registry", "registry", "{789DC89E-C2D4-4974-ABD5-9DE0111B38D9}"
+	ProjectSection(SolutionItems) = preProject
+		infra\registry\docker-compose.yml = infra\registry\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "swarm", "swarm", "{E74D7F5B-C3C6-48C3-AD4B-C6BA78AA713C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teamcity", "teamcity", "{BED11BF0-719B-401D-B6EC-C743E8F1B293}"
+	ProjectSection(SolutionItems) = preProject
+		infra\teamcity\docker-compose.yml = infra\teamcity\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "agent", "agent", "{3E11661D-8C47-45B9-B9E3-C155364F9536}"
+	ProjectSection(SolutionItems) = preProject
+		infra\teamcity\agent\Dockerfile = infra\teamcity\agent\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{F9E29F16-3A14-4AB5-B3B7-DFCAFDABBF8E}"
+	ProjectSection(SolutionItems) = preProject
+		infra\swarm\services\viz.yml = infra\swarm\services\viz.yml
 	EndProjectSection
 EndProject
 Global
@@ -49,9 +82,28 @@ Global
 		{23CF604E-EEE9-4224-98D1-9DC969B654BC}.Release|x64.Build.0 = Release|Any CPU
 		{23CF604E-EEE9-4224-98D1-9DC969B654BC}.Release|x86.ActiveCfg = Release|Any CPU
 		{23CF604E-EEE9-4224-98D1-9DC969B654BC}.Release|x86.Build.0 = Release|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Debug|x64.Build.0 = Debug|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Debug|x86.Build.0 = Debug|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Release|x64.ActiveCfg = Release|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Release|x64.Build.0 = Release|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Release|x86.ActiveCfg = Release|Any CPU
+		{E10EF8E4-7C56-48EA-ADCA-2F2127DD1B82}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{789DC89E-C2D4-4974-ABD5-9DE0111B38D9} = {EA280271-3648-4468-82E3-03B138535BC2}
+		{E74D7F5B-C3C6-48C3-AD4B-C6BA78AA713C} = {EA280271-3648-4468-82E3-03B138535BC2}
+		{BED11BF0-719B-401D-B6EC-C743E8F1B293} = {EA280271-3648-4468-82E3-03B138535BC2}
+		{3E11661D-8C47-45B9-B9E3-C155364F9536} = {BED11BF0-719B-401D-B6EC-C743E8F1B293}
+		{F9E29F16-3A14-4AB5-B3B7-DFCAFDABBF8E} = {E74D7F5B-C3C6-48C3-AD4B-C6BA78AA713C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9C736FB-2A2D-429D-A987-4ECEA0A4D329}
