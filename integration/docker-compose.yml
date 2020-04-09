@@ -5,6 +5,9 @@ services:
         image: my-registry:55000/gen:ci-${GENERATOR_BUILD_NUMBER-10}
         # ports:
             # - "8080:80"
+        configs:
+            - source: prodappsettings
+              target: /publish/appsettings.json
     mail:
         image: mailhog/mailhog
         #ports:
@@ -16,3 +19,8 @@ services:
         environment:
             - TEAMCITY_PROJECT_NAME
     
+configs:
+    prodappsettings:
+        file: ../deploy/prodappsettings.json
+
+
