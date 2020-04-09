@@ -5,16 +5,8 @@ services:
         image: my-registry:55000/gen:ci-${GENERATOR_BUILD_NUMBER-10}
         ports:
             - "${PORT_GENERATOR-8080}:80"
-        configs:
-            - source: prodappsettings
-              target: /publish/appsettings.json
     mail:
         image: mailhog/mailhog
         ports:
             - "${PORT_MAILHOG-8081}:8025"
- 
-configs:
-    prodappsettings:
-        file: prodappsettings.json
-
 
